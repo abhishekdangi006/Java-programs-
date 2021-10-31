@@ -1,0 +1,54 @@
+package com.company;
+import java.util.Scanner;
+import java.util.Random;
+
+class GuessTheNumberGame{
+    int computerInput;
+    int userInput;
+    int Guess = 1;
+    public GuessTheNumberGame(){
+        Random rn = new Random();
+        computerInput = rn.nextInt(100);
+    }
+    public void UserInput() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter a number ");
+        userInput = sc.nextInt();
+    }
+    public void isCorrect(){
+            if (computerInput == userInput) {
+                System.out.println("Congratulations, You guess the Right Number");
+            } else if (computerInput > userInput) {
+                System.out.println("you guess small number ");
+                UserInput();
+                setGuess();
+                isCorrect();
+            } else if (computerInput < userInput) {
+                System.out.println("you guess big number ");
+                UserInput();
+                setGuess();
+                isCorrect();
+            } else {
+                System.out.println("you enter a wrong number please enter 0 to 100 ");
+            }
+    }
+    public void getGuess(){
+        System.out.printf("you have taken %d number of Guesses",Guess);
+    }
+
+    public void setGuess()
+    {
+        Guess++;
+    }
+
+}
+
+public class GuessTheNumber {
+    public static void main(String[] args) {
+        System.out.println("Hello Friends this is Guess the number Game You have to Guess a number");
+GuessTheNumberGame player = new GuessTheNumberGame();
+player.UserInput();
+player.isCorrect();
+player.getGuess();
+    }
+}
